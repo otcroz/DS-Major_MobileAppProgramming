@@ -1,0 +1,23 @@
+fun main() {
+    var num: Int = 10
+    
+    // lateinit
+    lateinit var num5: String
+    
+    val num6 : Int by lazy{
+        println("in lazy...")
+        num + 10
+    }
+    
+    println(num6)
+    
+    //Char, String
+    var name: String = "moblie"
+    println("모바일앱 프로그래밍: $num ${1+2}")
+    
+    //Any, Unit, Nothing
+    var anything: Any?
+    num7 = null
+    
+    println(num7)
+}
