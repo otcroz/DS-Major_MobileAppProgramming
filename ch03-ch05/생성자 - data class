@@ -1,0 +1,44 @@
+// 주 생성자, 보조 생성자
+class User(name:String){
+    var name = "Yoo"
+    
+    constructor(name:String, count:Int):this(name){
+        this.name = name
+        println("constructor: $count")
+    }
+    
+    constructor(name:String, count:Int, email:String):this(name, count){
+        this.name = name
+        println("constructor: $count $email")
+    }
+    //constructor(){} 디폴트로 생성됨
+   	
+    init{
+        this.name = name
+        println("init: $name")
+    }
+    
+    fun someFun(){
+        println("name: $name")
+    }
+    
+}
+
+class Users(val name:String, val email:String, val age: Int)
+data class dataUser(val name:String, val email:String, val age: Int)
+
+fun main() {
+	var user = User("Yoo", 1, "soo@na.com")
+    user.someFun()
+    
+    //Data 클래스
+    val user1 = Users("kim", "kim@abc.com", 22)
+    val user2 = Users("kim", "kim@abc.com", 22)
+    
+    val duser1 = dataUser("kim", "kim@abc.com", 22)
+    val duser2 = dataUser("kim", "kim@abc.com", 22)
+    
+    println(user1.equals(user2))
+    println(duser1.equals(duser2))
+}
+
