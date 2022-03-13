@@ -1,0 +1,35 @@
+fun sum(data1: Int, data2: Int) : Int{ // val
+    return data1 + data2
+}
+
+fun main() {
+   	// sum 함수 만들기
+    println(sum(3,5))
+    
+    // Array
+    var data1 : Array<Int> = Array(3, {0})
+    println("data1[2]: ${data1[0]}") //{}로 감싼 것과 감싸지 않은 것의 차이..? 감싸면 값이 나오고 감싸지 않으면 객체의 주소값이었나 그게 나오네..
+    
+    var data2 : IntArray = IntArray(3, {2})
+    println("data2[0]: ${data2[0]}")
+    
+    var data3 = arrayOf<Int>(10,20,30)
+    println("data3[2]: ${data3[2]}")
+    
+    var data4 = intArrayOf(10,20,30)
+    println("data4[2]: ${data4[2]}")
+    
+    //List, Set, Map
+    var list1 : List<Int> = listOf<Int>(10,20,10)
+    println("list1[2]: ${list1[2]}")
+    
+    var list2 = listOf<Int>(10,20,10)
+    
+    var set1:Set<Int> = setOf<Int>(10,20,30,10)
+    println("set1: ${set1}")
+    
+    var map1: Map<Int, String> = mapOf<Int, String>(1 to "One", Pair(2, "two"))
+    println(map1.get(1))
+    
+    
+}
