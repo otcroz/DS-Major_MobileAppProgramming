@@ -1,0 +1,32 @@
+// Companion class
+class User{
+    companion object{
+        var value = 10
+        fun someCompanion(){
+            println(value)
+        }
+    }
+    var name = "kim"
+    fun someFun(){
+        println(name)
+    }
+}
+
+fun main() {
+	User.value = 20
+    User.someCompanion() //Unit 객체.?
+    
+    val obj = User()
+    obj.name = "lee"
+    obj.someFun()
+    
+    // 람다 함수
+    var result1 = {n1: Int, n2: Int -> println("n1 + n2");n1 + n2}
+    println(result1(1,2))
+    
+    var result2 = {n1:Int, n2:Int -> println("n1 + n2"); n1 + n2}(1,2)
+    println(result2)
+    
+    
+}
+
