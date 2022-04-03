@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.SearchView // 임포트 부분 확인 필요: androidx
 import com.example.application11.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면서 AppCompatActivity을 상속받는 형태가 됨, 자동으로 추가되어 사용
@@ -23,7 +24,27 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
         //val menuItem2 : MenuItem? = menu?.add(0,1,0, "메뉴2")
 
         //리소스로 만든 메뉴 적용
-        menuInflater.inflate(R.menu.menu_main, menu) 
+        menuInflater.inflate(R.menu.menu_main, menu)
+
+        //검색 메뉴에 대한 코드
+        val menuSearch = menu?.findItem(R.id.menu_search)
+        val searchView = menuSearch?.actionView as SearchView //메뉴 아이템이 연결된 액션 뷰(searchView를 가지고 온다)
+        searchView.setOnQueryTextListener( object: SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(p0: String?): Boolean { // 텍스트가 바뀔 때마다
+                //TODO("Not yet implemented")
+
+                return true
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean { // 텍스트를 검색할 때마다
+                //TODO("Not yet implemented")
+                binding.tv1.text = p0
+                    return true
+            }
+        }
+
+
+        )
         return super.onCreateOptionsMenu(menu) // menu를 전달하여 적용하도록
     }
 

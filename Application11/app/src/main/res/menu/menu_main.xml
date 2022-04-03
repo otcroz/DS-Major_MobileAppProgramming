@@ -7,6 +7,14 @@
     <item
         android:id="@+id/menu2"
         android:title="메뉴2"
-        android:icon="@android:drawable/ic_menu_add"
-        app:showAsAction="always"/> <!--오버플로우 메뉴에 대해 보이게 하는 것-->
+        android:icon="@android:drawable/ic_menu_add" />
+
+    <item
+        android:id="@+id/menu_search"
+        android:title="검색"
+        android:icon="@android:drawable/ic_menu_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always"/>
+        <!--showAsAction: 오버플로우 메뉴에 대해 보이게 하는 것-->
+        <!--actionViewClass: 동작하면 보여주는 뷰-->
 </menu>
