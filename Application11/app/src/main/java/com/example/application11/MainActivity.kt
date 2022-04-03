@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView // 임포트 부분 확인 필요: androidx
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.application11.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면서 AppCompatActivity을 상속받는 형태가 됨, 자동으로 추가되어 사용
@@ -17,7 +19,16 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
 
         //val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar) // 툴바를 액션 바 형태로 적용
+        setSupportActionBar(binding.toolbar) // **툴바를 액션 바 형태로 적용
+        
+        //**Fragment 적용하기
+        val fragmentManeger : FragmentManager = supportFragmentManager
+        val transection : FragmentTransaction = fragmentManeger.beginTransaction() // 프레그먼트 트랜젝션 추가
+        
+        //프레그먼트 추가
+        var fragment = Fragment_1()
+        transection.add(R.id.fragment_content, fragment) // activtity_main에 해당하는 레이아웃(LinearLayout의 fragment에 추가한다.)
+        transection.commit() // 트랜젝션 실행(프레그먼트 실행)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean { // 옵션 메뉴 추가
