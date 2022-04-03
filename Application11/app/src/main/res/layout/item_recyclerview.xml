@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"> <!--한 화면에 여러 개의 목록을 보이게-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/star_big_on"/>
+
+    <!--ImageView를 배치하고 나머지 자리에 TextView를 배치하는 형태-->
+    <TextView
+        android:id="@+id/item_tv"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

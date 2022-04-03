@@ -3,6 +3,7 @@ package com.example.application11
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView // 임포트 부분 확인 필요: androidx
@@ -22,13 +23,15 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
         setSupportActionBar(binding.toolbar) // **툴바를 액션 바 형태로 적용
         
         //**Fragment 적용하기
-        val fragmentManeger : FragmentManager = supportFragmentManager
-        val transection : FragmentTransaction = fragmentManeger.beginTransaction() // 프레그먼트 트랜젝션 추가
+        val fragmentManager : FragmentManager = supportFragmentManager
+        val transaction : FragmentTransaction = fragmentManager.beginTransaction() // 프레그먼트 트랜잭션 추가
         
         //프레그먼트 추가
-        var fragment = Fragment_1()
-        transection.add(R.id.fragment_content, fragment) // activtity_main에 해당하는 레이아웃(LinearLayout의 fragment에 추가한다.)
-        transection.commit() // 트랜젝션 실행(프레그먼트 실행)
+        Log.d("test", "addFragment")
+        var fragment = Fragment1()
+        transaction.add(R.id.fragment_content, fragment) // activtity_main에 해당하는 레이아웃(LinearLayout의 fragment에 추가한다.)
+        transaction.commit() // 트랜젝션 실행(프레그먼트 실행)
+        Log.d("test", "StartFragment")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean { // 옵션 메뉴 추가
