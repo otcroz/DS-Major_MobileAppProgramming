@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
 
         //val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar) // 툴바를 액션 바 형태로 적용
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean { // 옵션 메뉴 추가
