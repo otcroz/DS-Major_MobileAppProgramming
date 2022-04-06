@@ -71,7 +71,9 @@ class Fragment1 : Fragment() {
         // 바인딩 설정
         Log.d("test", "onCreateView1_binding")
         val binding = Fragment1Binding.inflate(inflater, container, false)
-        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        val layoutManager = LinearLayoutManager(activity)
+        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        binding.recyclerView.layoutManager = layoutManager // 기본: vertical로 설정되어 있음
         binding.recyclerView.adapter = MyAdapter(datas)
 
         return binding.root

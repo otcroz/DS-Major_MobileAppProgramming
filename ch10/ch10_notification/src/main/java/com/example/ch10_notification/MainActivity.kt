@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             } else{
                 builder = NotificationCompat.Builder(this)
             }
+
             builder.setSmallIcon(R.drawable.small)
             builder.setWhen(System.currentTimeMillis())
             builder.setContentTitle("안녕하세요")
