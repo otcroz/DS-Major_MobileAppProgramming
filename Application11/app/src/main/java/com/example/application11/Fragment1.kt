@@ -55,7 +55,7 @@ class MyAdapter(val datas : MutableList<String>) : RecyclerView.Adapter<Recycler
 class MyDecoration(val context: Context) : RecyclerView.ItemDecoration(){
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) { // 리사이클러 항목이 그려지기 전 호출되는 함수 (배경이미지 -> 아이템)
         super.onDraw(c, parent, state) // c: 캔버스
-        c.drawBitmap(BitmapFactory.decodeResource(context.resources, R.drawable.stadium),0f,0f,null ) // 이미지, 위치
+        //c.drawBitmap(BitmapFactory.decodeResource(context.resources, R.drawable.stadium),0f,0f,null ) // 이미지, 위치
     }
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) { // 리사이클에 대한 모든 것들이 호출된 후에 호출되는 함수

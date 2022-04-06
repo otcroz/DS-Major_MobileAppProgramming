@@ -13,11 +13,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <!--ConstraintLayout의 경우 길이를 지정해야 한다.-->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <!--Appbar 적용하기-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appber"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+            android:layout_height="250dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/stadium" />
+        </com.google.android.material.appbar.AppBarLayout>
+
 
         <TextView
             android:id="@+id/tv1"
