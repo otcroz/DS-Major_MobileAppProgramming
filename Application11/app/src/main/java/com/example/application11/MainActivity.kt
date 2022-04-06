@@ -7,11 +7,34 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView // 임포트 부분 확인 필요: androidx
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.example.application11.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면서 AppCompatActivity을 상속받는 형태가 됨, 자동으로 추가되어 사용
+
+    class MyFragmentAdapter(activity:FragmentActivity) : FragmentStateAdapter(activity){
+        // 프레그먼트들의 대한 배열
+        val fragments: List<Fragment>
+        init {
+            fragments = listOf(Fragment1(), Fragment2(), Fragment3()) // 3개의 프레그먼트 등록
+        }
+
+        override fun getItemCount(): Int { // 등록된 프레그먼트의 개수
+            //TODO("Not yet implemented")
+            return fragments.size
+        }
+
+        override fun createFragment(position: Int): Fragment { // 전달받은(position 번째에 해당하는는) 프레그먼트 리턴
+           //TODO("Not yet implemented")
+            return fragments[position]
+        }
+    }
+
     val binding by lazy {ActivityMainBinding.inflate(layoutInflater)} //초기화를 늦추어 다른 function에서도 사용할 수 있도록
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,15 +46,20 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
         setSupportActionBar(binding.toolbar) // **툴바를 액션 바 형태로 적용
         
         //**Fragment 적용하기
-        val fragmentManager : FragmentManager = supportFragmentManager
-        val transaction : FragmentTransaction = fragmentManager.beginTransaction() // 프레그먼트 트랜잭션 추가
+        //val fragmentManager : FragmentManager = supportFragmentManager
+        //val transaction : FragmentTransaction = fragmentManager.beginTransaction() // 프레그먼트 트랜잭션 추가
         
         //프레그먼트 추가
-        Log.d("test", "addFragment")
-        var fragment = Fragment1()
-        transaction.add(R.id.fragment_content, fragment) // activtity_main에 해당하는 레이아웃(LinearLayout의 fragment에 추가한다.)
-        transaction.commit() // 트랜젝션 실행(프레그먼트 실행)
-        Log.d("test", "StartFragment")
+
+        //var fragment = Fragment1()
+        //transaction.add(R.id.fragment_content, fragment) // activtity_main에 해당하는 레이아웃(LinearLayout의 fragment에 추가한다.)
+        //transaction.commit() // 트랜젝션 실행(프레그먼트 실행)
+
+        // 뷰 페이저 추가
+        binding.viewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL //가로 방향으로 프레그먼트 넘기기
+        binding.viewpager.adapter = MyFragmentAdapter(this)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean { // 옵션 메뉴 추가
