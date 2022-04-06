@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView // 임포트 부분 확인 필요: androidx
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
     }
 
     val binding by lazy {ActivityMainBinding.inflate(layoutInflater)} //초기화를 늦추어 다른 function에서도 사용할 수 있도록
+    lateinit var toggle : ActionBarDrawerToggle // 토글 선언
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,11 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
 
         //val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // 툴바 적용하기
         setSupportActionBar(binding.toolbar) // **툴바를 액션 바 형태로 적용
+        toggle = ActionBarDrawerToggle(this, binding.drawer, R.string.drawer_open, R.string.drawer_close) // 액티비티, xml, string
+        supportActionBar?.setDisplayHomeAsUpEnabled(true) // 액션바 추가
+        toggle.syncState() // 토글 동기화
         
         //**Fragment 적용하기
         //val fragmentManager : FragmentManager = supportFragmentManager
@@ -92,6 +98,9 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean { // 메뉴의 아이템이 선택되었을 때 이벤트 처리
+        // 토글에 대한 확인: 아이템 선택에 대한 확인
+        if (toggle.onOptionsItemSelected(item)) return true
+
         when(item.itemId){
             R.id.menu1 -> {
                 binding.tv1.setTextColor(Color.BLUE)
