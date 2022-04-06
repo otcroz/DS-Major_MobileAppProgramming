@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.application11.databinding.Fragment1Binding
@@ -71,8 +72,9 @@ class Fragment1 : Fragment() {
         // 바인딩 설정
         Log.d("test", "onCreateView1_binding")
         val binding = Fragment1Binding.inflate(inflater, container, false)
-        val layoutManager = LinearLayoutManager(activity)
-        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        //val layoutManager = LinearLayoutManager(activity)
+        //layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        val layoutManager = GridLayoutManager(activity, 2) //액티비티, 칼럼의 개수
         binding.recyclerView.layoutManager = layoutManager // 기본: vertical로 설정되어 있음
         binding.recyclerView.adapter = MyAdapter(datas)
 
