@@ -70,6 +70,12 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
         TabLayoutMediator(binding.tab1, binding.viewpager){
             tab, position -> tab.text = "TAB ${position+1}"
         }.attach()
+        
+        //드로어 레이아웃에서의 메뉴 이벤트
+        binding.mainDrawerView.setNavigationItemSelectedListener { 
+            Log.d("mobileApp", "Navigation selected...${it.title}") // it: 셀렉터가 전달받은 파라미터
+            true
+        }
 
     }
 
