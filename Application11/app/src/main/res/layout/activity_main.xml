@@ -76,6 +76,18 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+        <!--플로팅 액션 버튼-->
+        <!--layout_anchor: 떠있을 위치 결정-->
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:icon="@android:drawable/ic_input_add"
+            android:text="Extended FAB"
+            app:layout_anchor="@id/viewpager"
+            app:layout_anchorGravity="bottom|right"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!--2. 숨겨져 있는 태그-->
