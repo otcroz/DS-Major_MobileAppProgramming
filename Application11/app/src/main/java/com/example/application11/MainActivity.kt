@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
 
             override fun onQueryTextSubmit(p0: String?): Boolean { // 텍스트를 검색할 때마다
                 //TODO("Not yet implemented")
-                binding.tv1.text = p0
+                //binding.tv1.text = p0
                     return true
             }
         }
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
 
         when(item.itemId){
             R.id.menu1 -> {
-                binding.tv1.setTextColor(Color.BLUE)
+                //binding.tv1.setTextColor(Color.BLUE)
                 true //리턴값에 대한 값을 가져야 한다. -> true로 설정
             }
             R.id.menu2 -> {
