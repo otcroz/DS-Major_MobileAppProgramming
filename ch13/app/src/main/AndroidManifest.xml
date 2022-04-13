@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ch13">
         <activity
+            android:name=".TwoActivity"
+            android:exported="false" >
+            <!--인텐트 필터 설정-->
+            <intent-filter>
+                <action android:name="ACTION_EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".AddActivity"
             android:exported="false" />
         <activity

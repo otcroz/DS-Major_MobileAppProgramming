@@ -27,6 +27,11 @@
         android:layout_height="wrap_content"
         android:inputType="text"/>
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="암시적 인텐트" />
 
 
 </LinearLayout>

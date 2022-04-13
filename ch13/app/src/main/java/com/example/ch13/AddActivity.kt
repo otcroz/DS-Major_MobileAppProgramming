@@ -1,5 +1,7 @@
 package com.example.ch13
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -30,10 +32,16 @@ class AddActivity : AppCompatActivity() {
             finish() // 액티비티 종료
         }*/
 
-        //옵션 메뉴 사용하기
+        binding.button2.setOnClickListener {
+            val intent = Intent()
+            // 암시적으로 인텐트 불러옴
+            intent.action = "ACTION_EDIT" // ACTION_EDIT의 액션을 취하는 액티비티를 불러옴
+            intent.data = Uri.parse("http://www.google.com")
+            startActivity(intent)
+        }
         
     }
-
+    //옵션 메뉴 사용하기
     // 옵션에 대한 오버라이딩 함수 호출
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_add, menu) // 메뉴 사용 선언
