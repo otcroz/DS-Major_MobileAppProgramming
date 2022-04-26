@@ -23,6 +23,7 @@
             android:name=".AddActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"
+            android:launchMode="singleTop"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

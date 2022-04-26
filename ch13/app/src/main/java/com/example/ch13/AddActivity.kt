@@ -33,6 +33,12 @@ class AddActivity : AppCompatActivity() {
             finish() // 액티비티 종료
         }*/
 
+        // 자기 자신의 액티비티 호출하기
+        binding.button5.setOnClickListener {
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.button2.setOnClickListener {
             val intent = Intent()
             // 암시적으로 인텐트 불러옴
@@ -52,6 +58,11 @@ class AddActivity : AppCompatActivity() {
         }
         
     }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+    }
+
     //옵션 메뉴 사용하기
     // 옵션에 대한 오버라이딩 함수 호출
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

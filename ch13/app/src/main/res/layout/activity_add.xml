@@ -28,6 +28,12 @@
         android:text="암시적 인텐트" />
 
     <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다시 호출하기" />
+
+    <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
