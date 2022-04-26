@@ -87,6 +87,7 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
 
     }
 
+    // 메뉴 구성
     override fun onCreateOptionsMenu(menu: Menu?): Boolean { // 옵션 메뉴 추가
         //val menuItem1 : MenuItem? = menu?.add(0,0,0, "메뉴1") // 2번째 매개변수: 식별자, 4번째 매개변수: 메뉴에 노출되는 문자
         //val menuItem2 : MenuItem? = menu?.add(0,1,0, "메뉴2")
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity() { //안드로이드 X를 사용하면�
                 true
             }
         }
+
         return super.onOptionsItemSelected(item)
     }
 }
