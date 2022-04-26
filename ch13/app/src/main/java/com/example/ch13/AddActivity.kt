@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
 import com.example.ch13.databinding.ActivityAddBinding
 
 class AddActivity : AppCompatActivity() {
@@ -38,6 +39,16 @@ class AddActivity : AppCompatActivity() {
             intent.action = "ACTION_EDIT" // ACTION_EDIT의 액션을 취하는 액티비티를 불러옴
             intent.data = Uri.parse("http://www.google.com")
             startActivity(intent)
+        }
+
+        // 소프트 키보드 사용: Input 메서드 매니저 호출
+        val manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        binding.button3.setOnClickListener{
+            binding.addEditView.requestFocus()
+            manager.showSoftInput(binding.addEditView, InputMethodManager.SHOW_IMPLICIT)
+        }
+        binding.button4.setOnClickListener {
+            manager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
         }
         
     }

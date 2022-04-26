@@ -1,13 +1,19 @@
 package com.example.ch13
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.Window
+import android.view.WindowInsets
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ch13.databinding.ActivityMainBinding
@@ -22,6 +28,19 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 전체 화면 설정 (SDK 버전 고려)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {// >=30
+            window.setDecorFitsSystemWindows(false) // 전체화면으로 설정
+            val controller = window.insetsController
+            if(controller != null){
+                controller.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+                controller.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+        }else{
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                            WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
+
         //ActivityResultLauncher 사용하기
         val requestLauncher:ActivityResultLauncher<Intent> = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
@@ -35,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener{
             val intent = Intent(this, AddActivity::class.java) // 인텐트 생성
-            intent.putExtra("data1", "mobile") // 매개변수: 전달되는 값의 이름, 전달하려는 값...
+            intent.putExtra("data1", "mobile") // 매개변수: 전달되는 값의 이름, 전달하려는 값...(데이터 더 전달 가능)
             intent.putExtra("data2", "app")
             //startActivity(intent) // 인텐트 호출
             //startActivityForResult(intent, 10) // 매개변수: 인텐트, 호출값
