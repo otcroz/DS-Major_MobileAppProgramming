@@ -61,12 +61,23 @@ class MainActivity : AppCompatActivity() {
             requestLauncher.launch(intent) // ActivityResultLauncher 요청
         }
 
+        datas = mutableListOf<String>()
+        // DB 읽어오기
+        val db = DBHelper(this).readableDatabase
+        var cursor = db.rawQuery("select * from todo_tb", null)
+
+        // 데이터를 배열에 넣기
+        while(cursor.moveToNext()){
+            datas?.add(cursor.getString(1)) // 2번째 필드에 해당하는 값을 가져옴
+        }
+        db.close()
+
         //액티비티가 비활성 -> 활성되었을 때 Bundle에 저장되었던 datas의 값을 받는다.
-        datas = savedInstanceState?.let{
+        /*datas = savedInstanceState?.let{
             it.getStringArrayList("mydatas")?.toMutableList() // key 값을 통해 값을 얻어옴
         } ?: let{ // null일 때
             mutableListOf<String>() // 리스트 생성 및 선언
-        }
+        }*/
 
         // 데이터를 가지고 온 이후(savedInstanceState) 리사이클러 뷰의 어댑터 설정
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -78,10 +89,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     // datas의 값을 저장해두는 함수
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+    /*override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
         outState.putStringArrayList("mydatas", ArrayList(datas)) // Bundle에 ArrayList 값을 저장
-    }
+    }*/
 
     // 이 메서드를 통해 인텐트가 돌아옴
     /*
