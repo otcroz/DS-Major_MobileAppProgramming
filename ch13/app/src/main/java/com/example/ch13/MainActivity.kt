@@ -1,6 +1,9 @@
 package com.example.ch13
 
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.icu.util.Output
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,10 +16,13 @@ import android.view.WindowManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ch13.databinding.ActivityMainBinding
+import java.io.File
+import java.io.OutputStreamWriter
 
 class MainActivity : AppCompatActivity() {
     // 전역 변수로 선언, var로 변경
@@ -71,6 +77,35 @@ class MainActivity : AppCompatActivity() {
             datas?.add(cursor.getString(1)) // 2번째 필드에 해당하는 값을 가져옴
         }
         db.close()
+
+        val items = arrayOf<String>("내장")
+        binding.fileBtn.setOnClickListener {
+            AlertDialog.Builder(this).run{
+                setTitle("저장 위치 선택")
+                setIcon(android.R.drawable.ic_dialog_info)
+                setSingleChoiceItems(items, 1, object: DialogInterface.OnClickListener{
+                    override fun onClick(p0: DialogInterface?, p1: Int) {
+                        if(p1 == 0){ // 내장 메모리
+                            // 저장
+                            val file = File(filesDir, "test.txt")
+                            val writeStream: OutputStreamWriter = file.writer()
+                            writeStream.write("hello android")
+                            writeStream.write("$items[p1]")
+                            for(i in datas!!.indices) // 인덱스 값 이용
+                                writeStream.write(datas!![i]) // i번째 해당하는 data 출력
+                            
+                            writeStream.flush() // 버퍼에 저장한 내용을 파일에 출력
+                            
+
+
+                        }
+                    }
+
+                })
+                setPositiveButton("선택", null)
+                show()
+            }
+        }
 
         //액티비티가 비활성 -> 활성되었을 때 Bundle에 저장되었던 datas의 값을 받는다.
         /*datas = savedInstanceState?.let{
