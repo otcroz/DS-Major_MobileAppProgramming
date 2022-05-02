@@ -48,8 +48,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/cameraBtn"
-            android:text="카메라 데이터"/>
+            android:id="@+id/cameraBtn1"
+            android:text="카메라1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/cameraBtn2"
+            android:text="카메라2"/>
     </LinearLayout>
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mapBtn"
+        android:text="지도앱 연동하기"
+        android:layout_marginTop="100px"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/callBtn"
+        android:text="전화걸기" />
 </LinearLayout>
