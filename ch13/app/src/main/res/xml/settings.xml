@@ -21,7 +21,7 @@
             app:key="color"
             app:title="색상 선택"
             android:entries="@array/my_color"
-            app:entries="@array/my_color_value"/>
+            app:entryValues="@array/my_color_value"/>
     </PreferenceCategory>
 
 

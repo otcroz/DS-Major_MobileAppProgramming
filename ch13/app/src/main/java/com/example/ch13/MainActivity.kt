@@ -145,11 +145,12 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.menu_setting){
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_setting) {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
+
         }
-        return super.onContextItemSelected(item)
+        return super.onOptionsItemSelected(item)
     }
 }
