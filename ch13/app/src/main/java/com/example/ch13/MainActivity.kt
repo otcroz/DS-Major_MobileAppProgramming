@@ -3,11 +3,15 @@ package com.example.ch13
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.icu.util.Output
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.provider.Settings.Global.getString
+import android.provider.Settings.Secure.getString
 import android.util.Log
 import android.view.*
 import androidx.activity.result.ActivityResultLauncher
@@ -15,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.contentValuesOf
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ch13.databinding.ActivityMainBinding
@@ -26,11 +31,19 @@ class MainActivity : AppCompatActivity() {
     // 전역 변수로 선언, var로 변경
     var datas:MutableList<String>? = null
     lateinit var adapter : MyAdapter
+    lateinit var sharedPreference: SharedPreferences
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 프리퍼런스 값 가져오기
+        sharedPreference = PreferenceManager.getDefaultSharedPreferences(this)
+        val bgColor = sharedPreference.getString("color", "")
+        binding.rootlayout.setBackgroundColor(Color.parseColor(bgColor))
 
         // 전체 화면 설정 (SDK 버전 고려)
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {// >=30
@@ -139,6 +152,13 @@ class MainActivity : AppCompatActivity() {
 
         }
     }*/
+
+    override fun onResume() { // 액티비티가 중단되었다가 다시 실행될 때 호출
+        super.onResume()
+        val bgColor = sharedPreference.getString("color", "")
+        binding.rootlayout.setBackgroundColor(Color.parseColor(bgColor))
+
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
