@@ -21,6 +21,7 @@ import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ch13.databinding.ActivityMainBinding
+import java.io.BufferedReader
 import java.io.File
 import java.io.OutputStreamWriter
 
@@ -96,7 +97,11 @@ class MainActivity : AppCompatActivity() {
                             
                             writeStream.flush() // 버퍼에 저장한 내용을 파일에 출력
                             
-
+                            // 데이터 출력하기
+                            val readStream:BufferedReader = file.reader().buffered() // 읽어올 버퍼
+                            readStream.forEachLine {
+                                Log.d("mobileApp", "$it")
+                            }
 
                         }
                     }
