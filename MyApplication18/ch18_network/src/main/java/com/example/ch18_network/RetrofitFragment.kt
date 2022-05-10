@@ -1,6 +1,8 @@
 package com.example.ch18_network
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ch18_network.databinding.FragmentRetrofitBinding
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,9 +49,23 @@ class RetrofitFragment : Fragment() {
             "CDNRFWzcqVNIQ++7vj9QCBoCKvsk5fAEh/nT6XXO+49SR7SN2qEWcX9vTorvWC1Zsgn1VGftwEZslejzAUs/ww=="
         )
 
+        //서버로부터 전달받은 내용 처리
+        call?.enqueue(object: Callback<PageListModel>{
+            override fun onResponse(call: Call<PageListModel>, response: Response<PageListModel>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response")
+                    binding.retroRecyclerView.layoutManager = LinearLayoutManager(activity)
+                    binding.retroRecyclerView.adapter = MyAdapter(activity as Context, response.body()?.data)
+                }
+            }
 
-        binding.retroRecyclerView.layoutManager = LinearLayoutManager(activity)
-        //binding.retroRecyclerView.adapter
+            override fun onFailure(call: Call<PageListModel>, t: Throwable) {
+                Log.d("mobileApp", "onFailure")
+            }
+
+        })
+
+
 
         return binding.root
     }
