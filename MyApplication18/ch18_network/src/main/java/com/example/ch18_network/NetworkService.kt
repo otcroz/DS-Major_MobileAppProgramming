@@ -12,4 +12,11 @@ interface NetworkService {
         @Query("returnType") returnType:String,
         @Query("serviceKey") apiKey: String
     ) : Call<PageListModel>
+
+    @GET("B551182/pubReliefHospService/getpubReliefHospList")
+    fun getXmlList(
+        @Query("serviceKey") apiKey: String?,
+        @Query("pageNo") page:Int,
+        @Query("numOfRows") pageSize: Int
+    ) : Call<responseInfo>
 }
