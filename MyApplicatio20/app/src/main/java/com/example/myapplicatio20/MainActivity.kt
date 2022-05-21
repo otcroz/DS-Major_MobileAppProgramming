@@ -3,7 +3,9 @@ package com.example.myapplicatio20
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.myapplicatio20.databinding.ActivityMainBinding
+import com.kakao.sdk.common.util.Utility
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -13,6 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 해시키 구하기
+        //val keyHash = Utility.getKeyHash(this)
+        //Log.d("mobileApp", keyHash)
 
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, AuthActivity::class.java) // 액티비티 호출로 로그인
