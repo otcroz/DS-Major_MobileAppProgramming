@@ -21,6 +21,7 @@ class MyAdapter(val context: Context, val datas:MutableList<ItemModel>?): Recycl
         // Glide 라이브러리 적용하기
         Glide.with(binding.root)
             .load(model.download_url)
+            .override(400, 300) // 크기에 대한 값 지정
             .into(binding.flag)
     }
 
