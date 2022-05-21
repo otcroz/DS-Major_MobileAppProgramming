@@ -52,6 +52,30 @@ class AuthActivity : AppCompatActivity() {
                 }
 
         }
+
+        binding.loginBtn.setOnClickListener {
+            val email = binding.authEmailEditView.text.toString()
+            val password = binding.authPasswordEditView.text.toString()
+
+            MyApplication.auth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this){ task ->
+                    binding.authPasswordEditView.text.clear()
+                    binding.authEmailEditView.text.clear()
+                    if(task.isSuccessful){
+                        //인증 확인
+                        if(MyApplication.checkAuth()){
+                            MyApplication.email = email
+                            finish()
+                        } else{
+                            Toast.makeText(baseContext, "이메일 인증이 되지 않았습니다.", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+                    else{ // 로그인 실패
+                        Toast.makeText(baseContext, "로그인 실패", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
     }
 
     fun changeVisibility(mode:String){
