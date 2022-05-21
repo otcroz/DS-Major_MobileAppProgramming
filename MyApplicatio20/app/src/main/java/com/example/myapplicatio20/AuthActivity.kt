@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import com.example.myapplicatio20.databinding.ActivityAuthBinding
 
 class AuthActivity : AppCompatActivity() {
@@ -25,6 +26,31 @@ class AuthActivity : AppCompatActivity() {
         binding.signBtn.setOnClickListener {
             val email = binding.authEmailEditView.text.toString()
             val password = binding.authPasswordEditView.text.toString()
+            MyApplication.auth.createUserWithEmailAndPassword(email, password) // 회원가입
+            // 회원가입이 잘 되고 있나 확인
+                .addOnCompleteListener(this){ task ->
+                    binding.authEmailEditView.text.clear()
+                    binding.authPasswordEditView.text.clear()
+                    if(task.isSuccessful){ // 회원가입 성공
+                        //이메일 검증
+                        MyApplication.auth.currentUser?.sendEmailVerification()
+                            ?.addOnCompleteListener{ sendTask ->
+                                if(sendTask.isSuccessful){ // 메일발송 성공
+                                    Toast.makeText(baseContext, "회원가입 성공!! 메일을 확인해주세요.", Toast.LENGTH_SHORT).show()
+                                    changeVisibility("logout") // 아직은 회원가입이 진행된 것, 로그인이 된 것은 아니다.
+                                } else{ // 메일발송 실패
+                                    Toast.makeText(baseContext, "메일발송 실패", Toast.LENGTH_SHORT).show()
+                                    changeVisibility("logout") // 로그인 상태는 아님
+                                }
+                            }
+                        
+                    }
+                    else{ // 회원가입 실패
+                        Toast.makeText(baseContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                        changeVisibility("logout") // 로그인 상태는 아님
+                    }
+                }
+
         }
     }
 
