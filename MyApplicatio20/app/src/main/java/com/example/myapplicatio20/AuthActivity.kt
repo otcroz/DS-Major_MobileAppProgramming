@@ -65,7 +65,7 @@ class AuthActivity : AppCompatActivity() {
                         //인증 확인
                         if(MyApplication.checkAuth()){
                             MyApplication.email = email
-                            finish()
+                            finish() // MainActivity 로 돌아감
                         } else{
                             Toast.makeText(baseContext, "이메일 인증이 되지 않았습니다.", Toast.LENGTH_SHORT).show()
                         }
@@ -75,6 +75,12 @@ class AuthActivity : AppCompatActivity() {
                         Toast.makeText(baseContext, "로그인 실패", Toast.LENGTH_SHORT).show()
                     }
                 }
+        }
+
+        binding.logoutBtn.setOnClickListener {
+            MyApplication.auth.signOut()
+            MyApplication.email = null
+            finish() // MainActivity 로 돌아감
         }
     }
 

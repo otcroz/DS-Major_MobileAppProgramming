@@ -19,6 +19,7 @@
             android:text="덕성 모바일"
             android:textSize="24dp"
             android:padding="10dp"
+            android:id="@+id/authTv"
             android:textColor="@color/white"/>
         <Button
             android:layout_width="wrap_content"
