@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6253645-3a8c-425d-8547-44e26cf76554" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application11/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application11/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application11/app/src/main/java/com/example/application11/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Application11/app/src/main/java/com/example/application11/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application11/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Application11/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch09/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ch09/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch10/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ch10/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch10/ch10_notification/src/main/java/com/example/ch10_notification/ReplyReceiver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ch10/ch10_notification/src/main/java/com/example/ch10_notification/ReplyReceiver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch13/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ch13/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch13/app/src/main/java/com/example/ch13/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ch13/app/src/main/java/com/example/ch13/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch13/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ch13/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +25,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mobile_project" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
