@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(p0: GoogleMap?) {
         googleMap = p0 // 구글맵을 변수에 넣는다.
 
+        // 지도의 타입을 바꾸어줌: satellite
+        googleMap?.mapType = GoogleMap.MAP_TYPE_SATELLITE
         //특정 위치를 보여준다.(위도, 경도)
         val latLng = LatLng(37.568256, 126.897240)
         val position: CameraPosition = CameraPosition.Builder() // 카메라를 움직여서 설정해놓은 위치로 지도를 이동하도록 한다.
