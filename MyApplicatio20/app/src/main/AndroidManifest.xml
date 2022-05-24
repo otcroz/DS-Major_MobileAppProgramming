@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MyApplicatio20">
         <activity
             android:name=".AuthActivity"
@@ -26,10 +27,11 @@
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="ndroid.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:host="oauth"
-                    android:scheme="kakao7eee907651419d438b8d4418dbf32b6e" />
+                    android:scheme="kakaob03c092ff0bab2bc1891098ecccb2f2a" />
             </intent-filter>
         </activity>
     </application>

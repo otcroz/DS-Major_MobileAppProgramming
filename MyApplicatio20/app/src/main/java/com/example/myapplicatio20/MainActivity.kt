@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if(MyApplication.checkAuth()){ // 검증된 이메일인지 확인
+        if(MyApplication.checkAuth() || MyApplication.email != null){ // 검증된 이메일인지 확인
             binding.btnLogin.text = "로그아웃"
             binding.authTv.text = "${MyApplication.email}님 반갑습니다."
             binding.authTv.textSize = 16F

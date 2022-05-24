@@ -81,9 +81,18 @@ class AuthActivity : AppCompatActivity() {
                 }
         }
 
+        // 로그아웃
         binding.logoutBtn.setOnClickListener {
             MyApplication.auth.signOut()
             MyApplication.email = null
+            
+            UserApiClient.instance.logout { error ->
+                if(error != null){ // 로그아웃 하는 과정에서 에러 발생
+                    Toast.makeText(baseContext, "로그아웃 실패", Toast.LENGTH_SHORT).show()
+                } else{
+                    Toast.makeText(baseContext, "로그아웃 성공", Toast.LENGTH_SHORT).show()
+                }
+            }
             finish() // MainActivity 로 돌아감
         }
 
@@ -91,7 +100,8 @@ class AuthActivity : AppCompatActivity() {
             // 토큰 정보 보기
             UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
                 if (error != null) {
-                    Log.e("mobileApp", "토큰 정보 보기 실패", error)
+                    Log.e("mobileApp", "토큰 정보 보기 실패 ${tokenInfo}", error)
+                    Log.e("mobileApp", "토큰 정보 보기 실패 ${error.message.toString()}", error)
                 }
                 else if (tokenInfo != null) {
                     Log.i("mobileApp", "토큰 정보 보기 성공")
@@ -112,11 +122,32 @@ class AuthActivity : AppCompatActivity() {
                             Log.e("mobileApp", "사용자 정보 요청 실패", error)
                         }
                         else if (user != null) {
-                            Log.i("mobileApp", "사용자 정보 요청 성공" +
-                                    "\n회원번호: ${user.id}" +
-                                    "\n이메일: ${user.kakaoAccount?.email}" +
-                                    "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
-                                    "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+                            Log.i("mobileApp", "사용자 정보 요청 성공 ${user.kakaoAccount?.email}")
+                            var scopes = mutableListOf<String>()
+                            if(user.kakaoAccount?.email != null){ // 이메일 값이 유효한 경우
+                                MyApplication.email = user.kakaoAccount?.email
+                                finish()
+                            } else if(user.kakaoAccount?.emailNeedsAgreement == true){ // 이메일 정보를 가져오지 못함, 사용자에게 추가적인 정보를 받아야함
+                                Log.i("mobileApp", "사용자에게 추가 동의 필요")
+                                scopes.add("account_email")
+                                UserApiClient.instance.loginWithNewScopes(this, scopes){token, error -> 
+                                    if(error != null){ // 에러가 발생했을 경우
+                                        Log.e("mobileApp", "추가 동의 실패 ${error.message}", error)
+                                    } else{
+                                        // 사용자 정보 재요청
+                                        UserApiClient.instance.me{user, error ->
+                                            if(error != null){
+                                                Log.e("mobileApp", "사용자 정보 요청 실패", error)
+                                            } else if( user != null){ // 사용자 정보 요청 성공
+                                                MyApplication.email = user.kakaoAccount?.email.toString()
+                                                finish()
+                                            }
+                                        }
+                                    }
+                                }
+                            } else{
+                                Log.e("mobileApp", "이메일 획득 불가", error)
+                            }
                         }
                     }
                 }

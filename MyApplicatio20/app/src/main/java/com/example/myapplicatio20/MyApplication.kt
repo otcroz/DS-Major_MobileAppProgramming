@@ -24,6 +24,6 @@ class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         auth = Firebase.auth
-        KakaoSdk.init(this, "7eee907651419d438b8d4418dbf32b6e") // 네이티브 앱 키를 넣어준다.
+        KakaoSdk.init(this, "b03c092ff0bab2bc1891098ecccb2f2a") // 네이티브 앱 키를 넣어준다.
     }
 }
