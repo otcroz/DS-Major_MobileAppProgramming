@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--showAsAction: 액션바에 나타나게 하는 것의 여부 설정-->
+    <item
+        android:id="@+id/menu1"
+        android:title="hello"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu2"
+        android:title="angry"
+        android:icon="@android:drawable/ic_input_add"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/menu3"
+        android:title="happy"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu4"
+        android:title="sad"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="ifRoom"/>
+
+    <!--검색 메뉴-->
+    <item
+        android:id="@+id/menu_search"
+        android:title="검색"
+        android:icon="@android:drawable/ic_menu_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always"/>
+    <!--actionViewClass: 액션 뷰를 메뉴에 적용할 때 사용-->
+</menu>

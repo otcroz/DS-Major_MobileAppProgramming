@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">모바일앱프로그래밍 중간고사 대비</string>
+    <string name="introduce">내 이름은 유수연입니다. 만나서 반가워요</string>
+    <string name="content_1">오늘은 무엇을 할까요?</string>
+    <string name="list">리스트 목록입니다. 오늘 할 것을 골라보세요</string>
+</resources>

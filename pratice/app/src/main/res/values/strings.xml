@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">mobileApp middleTest</string>
+    <string name="introduce">Hello My name is Sooyeon Yoo</string>
+    <string name="content_1">Today is Tuesday</string>
+    <string name="list">This is List.~!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
