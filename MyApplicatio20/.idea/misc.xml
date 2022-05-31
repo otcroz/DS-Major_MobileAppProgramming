@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/1Duksung_ComputerEngineering/2022_1_CE/Major_MbobileAppProgramming/MyApplicatio20/app/src/main/res/layout/activity_add.xml" value="0.22239583333333332" />
         <entry key="..\:/1Duksung_ComputerEngineering/2022_1_CE/Major_MbobileAppProgramming/MyApplicatio20/app/src/main/res/layout/activity_auth.xml" value="0.2234375" />
         <entry key="..\:/1Duksung_ComputerEngineering/2022_1_CE/Major_MbobileAppProgramming/MyApplicatio20/app/src/main/res/layout/activity_main.xml" value="0.2234375" />
+        <entry key="..\:/1Duksung_ComputerEngineering/2022_1_CE/Major_MbobileAppProgramming/MyApplicatio20/app/src/main/res/layout/item_main.xml" value="0.22239583333333332" />
+        <entry key="..\:/1Duksung_ComputerEngineering/2022_1_CE/Major_MbobileAppProgramming/MyApplicatio20/app/src/main/res/menu/menu_add.xml" value="0.22239583333333332" />
       </map>
     </option>
   </component>
